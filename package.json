@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "name": "contracts-worker",
+  "version": "0.0.0",
+  "description": "Service to get verified contracts using CF workers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write '**/*.{js,css,json,md}'"
+  },
+  "author": "strictlymomo <momo.araki@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^1.18.2"
+  }
+}
