@@ -1,7 +1,7 @@
-name = "contracts-worker"
+name = "verified-contracts-service"
 type = "javascript"
 
-account_id = ""
+account_id = "534c5a9a1767d4875b86e1c7c0373618"
 workers_dev = true
 route = ""
 zone_id = ""

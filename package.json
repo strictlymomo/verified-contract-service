@@ -1,7 +1,7 @@
 {
   "private": true,
-  "name": "contracts-worker",
-  "version": "0.0.0",
+  "name": "verified-contracts-service",
+  "version": "0.0.1",
   "description": "Service to get verified contracts using CF workers",
   "main": "index.js",
   "scripts": {
