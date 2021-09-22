@@ -6,26 +6,38 @@ addEventListener("fetch", (event) => {
   );
 });
 
-function buildURL(url) {
-  return `https://cchain.explorer.avax.network/address/${url}/contracts`
-}
+const hr = new HTMLRewriter()
+  .on("strong.mr-4.mb-2.text-dark", new ElementHandler().element())  
 
-async function handleRequest(request) {
-  const { pathname } = new URL(request.url);
-  
-  if (pathname.startsWith("/api/metadata")) {    
-    const blahs = pathname.split("/")    
-        
-    const dataResponse = await fetch(buildURL(blahs[3]))
-    const dataHTML = await dataResponse.text()
-    console.log(dataHTML)
-
-    const data = {
-      hello: dataHTML
+  // https://github.com/adamschwartz/web.scraper.workers.dev
+  class ElementHandler {
+    element(element) {
+      // An incoming element, such as `div`
+      console.log(`Incoming element: ${element.tagName}`)
     }
   
-    const json = JSON.stringify(data, null, 2)
+    comments(comment) {
+      // An incoming comment
+    }
   
+    text(text) {
+      // An incoming piece of text
+    }
+  } 
+async function handleRequest(req) {
+  const { pathname } = new URL(req.url);
+  
+  if (pathname.startsWith("/api/metadata")) {
+    const res = await fetch(`https://cchain.explorer.avax.network/address/${(pathname.split("/"))[3]}/contracts`)
+    const dataHTML = await res.text()
+    
+    
+    
+
+    let json = JSON.stringify({
+      hello: dataHTML
+    }, null, 2)
+    
     return new Response(json, {
         headers: {
           "content-type": "application/json;charset=UTF-8"
