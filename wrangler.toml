@@ -1,8 +1,9 @@
 name = "verified-contracts-service"
-type = "javascript"
+type = "webpack"
 
 account_id = "534c5a9a1767d4875b86e1c7c0373618"
 workers_dev = true
+
 route = ""
 zone_id = ""
 compatibility_date = "2021-09-21"
