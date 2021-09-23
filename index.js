@@ -3,6 +3,8 @@ import { ElementHandler } from './utils/ElementHandler.js'
 console.log('ElementHandler', ElementHandler)
 
 addEventListener('fetch', event => {
+  console.log('event', event)
+
   event.respondWith(
     handleRequest(event.request).catch(
       err => new Response(err.stack, { status: 500 }),
