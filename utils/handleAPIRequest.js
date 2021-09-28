@@ -28,25 +28,21 @@ export async function handleAPIRequest({ url, id }) {
 
   try {
     // CONTRACT NAME
-    // let selTitle = 'strong.mr-4.mb-2.text-dark'
-    let selTitle = '.d-flex.justify-content-between.align-items-baseline'
-    let HTMLquery = await scraper.querySelector(selTitle).getText(true)
-    console.log('title       ', HTMLquery[selTitle])
+    let HTMLquery = await scraper
+      .querySelector('strong.mr-4.mb-2.text-dark')
+      .getText(true)
     if (HTMLquery) {
-      decoded.name = HTMLquery[selTitle]
+      decoded.name = HTMLquery[selTitle][0]
     }
 
     // QUERIES
     let selQuery = '.d-flex.justify-content-between.align-items-baseline'
-    // let HTMLqueries = await scraper
-    //   .querySelector(selQuery)
-    //   .getAttribute('data-clipboard-text')
-    // console.log('HTMLqueries', HTMLqueries)
+    let HTMLqueries = await scraper.querySelector(selQuery)
+    console.log('HTMLqueries', HTMLqueries)
   } catch (error) {
     return generateErrorJSONResponse(error)
   }
 
   console.log('decoded', JSON.stringify(decoded, null, 2))
-
   return generateJSONResponse({ decoded })
 }
